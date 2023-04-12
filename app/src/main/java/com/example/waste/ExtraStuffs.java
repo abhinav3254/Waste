@@ -2,6 +2,7 @@ package com.example.waste;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,16 +36,14 @@ public class ExtraStuffs {
     public static void showBottomSheet(Pojo pojo, Context context) {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(R.layout.bottom_sheet);
-        TextView id = bottomSheetDialog.findViewById(R.id.idAppBtm);
         TextView title = bottomSheetDialog.findViewById(R.id.titleBtm);
         TextView date = bottomSheetDialog.findViewById(R.id.dateBtm);
         TextView price = bottomSheetDialog.findViewById(R.id.priceBtm);
         TextView desc = bottomSheetDialog.findViewById(R.id.descBtm);
 
-        id.setText(pojo.getId());
         title.setText(pojo.getTitle());
         date.setText(pojo.getDate());
-        price.setText(pojo.getDate());
+        price.setText(pojo.getPrice());
         desc.setText(pojo.getDesc());
 
         bottomSheetDialog.show();
