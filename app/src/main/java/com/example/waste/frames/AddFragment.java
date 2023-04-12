@@ -83,24 +83,19 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
                 String p = price.getText().toString();
                 String d = editDate.getText().toString();
                 String desc = description.getText().toString();
-                if (t.isEmpty() || p.isEmpty()||type.isEmpty()) {
+                String spinnerT = spinner.getSelectedItem().toString();
+                if (t.isEmpty() || p.isEmpty()||spinnerT.isEmpty()) {
                     Toast.makeText(view.getContext(), "Fields can't be epmty", Toast.LENGTH_SHORT).show();
                 } else if (d.isEmpty()) {
                     ExtraStuffs.setDate(editDate);
                 } else {
+                    Toast.makeText(view.getContext(), ""+spinnerT, Toast.LENGTH_SHORT).show();
                     // save to database
-                    pojo = new Pojo(t,p,desc,d,type);
+                    pojo = new Pojo(t,p,desc,d,spinnerT);
                     dbHelper = new DBHelper(view.getContext());
                     boolean ans = dbHelper.addData(pojo);
                     if (ans) {
-                        Toast.makeText(view.getContext(), "Added", Toast.LENGTH_SHORT).show();
-
-                        Fragment fragment = new HomeFragment();
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.frameLayout, fragment);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
+                        Toast.makeText(view.getContext(), "Added"+spinnerT, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(view.getContext(), "Error!!", Toast.LENGTH_SHORT).show();
                     }
