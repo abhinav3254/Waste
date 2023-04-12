@@ -34,11 +34,11 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.desc.setText(list.get(holder.getAdapterPosition()).getDesc());
+//        holder.desc.setText(list.get(holder.getAdapterPosition()).getDesc());
         holder.title.setText(list.get(holder.getAdapterPosition()).getTitle());
-        holder.date.setText(list.get(holder.getAdapterPosition()).getDate());
+//        holder.date.setText(list.get(holder.getAdapterPosition()).getDate());
         holder.price.setText(list.get(holder.getAdapterPosition()).getPrice());
-        holder.id.setText(list.get(holder.getAdapterPosition()).getId());
+//        holder.id.setText(list.get(holder.getAdapterPosition()).getId());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,11 +57,11 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
         MaterialCardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.title);
-            price = itemView.findViewById(R.id.price);
-            date = itemView.findViewById(R.id.date);
-            desc = itemView.findViewById(R.id.desc);
-            id = itemView.findViewById(R.id.idApp);
+            title = itemView.findViewById(R.id.titleCard);
+            price = itemView.findViewById(R.id.price1);
+//            date = itemView.findViewById(R.id.date);
+//            desc = itemView.findViewById(R.id.desc);
+//            id = itemView.findViewById(R.id.idApp);
             cardView = itemView.findViewById(R.id.cardViewCard);
         }
     }
