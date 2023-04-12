@@ -45,6 +45,7 @@
                         android:fontFamily="@font/archivo_narrow_italic"
                         android:gravity="center"
                         android:text="2000"
+                        android:layout_gravity="center"
                         android:textColor="@color/red"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -85,7 +86,7 @@
                     app:cornerRadius="20dp"
                     android:elevation="2dp"
                     android:textColor="@color/white"
-                    android:backgroundTint="#00e2fa"
+                    android:backgroundTint="@color/amazing_1"
                     android:layout_marginRight="10dp"
                     android:text="Update"
                     android:layout_width="0dp"
@@ -95,7 +96,7 @@
                     app:cornerRadius="20dp"
                     android:elevation="2dp"
                     android:textColor="@color/white"
-                    android:backgroundTint="#38f9d5"
+                    android:backgroundTint="@color/amazing_2"
                     android:layout_marginLeft="10dp"
                     android:text="Delete"
                     android:layout_width="0dp"
