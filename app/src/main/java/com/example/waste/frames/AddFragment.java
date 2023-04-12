@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-public class AddFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class AddFragment extends Fragment {
 
     FragmentAddBinding binding;
     Activity activity = this.getActivity();
@@ -63,12 +63,6 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
         price = view.findViewById(R.id.priceText);
         description = view.findViewById(R.id.descriptionText);
 
-        Spinner spinner = view.findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
-
-        ArrayAdapter adapter = new ArrayAdapter(view.getContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item,spinnerData);
-        spinner.setAdapter(adapter);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,19 +77,17 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
                 String p = price.getText().toString();
                 String d = editDate.getText().toString();
                 String desc = description.getText().toString();
-                String spinnerT = spinner.getSelectedItem().toString();
-                if (t.isEmpty() || p.isEmpty()||spinnerT.isEmpty()) {
+                if (t.isEmpty() || p.isEmpty()) {
                     Toast.makeText(view.getContext(), "Fields can't be epmty", Toast.LENGTH_SHORT).show();
                 } else if (d.isEmpty()) {
                     ExtraStuffs.setDate(editDate);
                 } else {
-                    Toast.makeText(view.getContext(), ""+spinnerT, Toast.LENGTH_SHORT).show();
                     // save to database
-                    pojo = new Pojo(t,p,desc,d,spinnerT);
+                    pojo = new Pojo(t,p,desc,d);
                     dbHelper = new DBHelper(view.getContext());
                     boolean ans = dbHelper.addData(pojo);
                     if (ans) {
-                        Toast.makeText(view.getContext(), "Added"+spinnerT, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Added", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(view.getContext(), "Error!!", Toast.LENGTH_SHORT).show();
                     }
@@ -104,16 +96,5 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
         });
 
         return view;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText(getContext().getApplicationContext(), spinnerData[position], Toast.LENGTH_SHORT).show();
-        type = spinnerData[position];
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

@@ -39,7 +39,6 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.date.setText(list.get(holder.getAdapterPosition()).getDate());
         holder.price.setText(list.get(holder.getAdapterPosition()).getPrice());
         holder.id.setText(list.get(holder.getAdapterPosition()).getId());
-        holder.type.setText(list.get(holder.getAdapterPosition()).getType());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +53,7 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title,price,date,desc,id,type;
+        TextView title,price,date,desc,id;
         MaterialCardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +63,6 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
             desc = itemView.findViewById(R.id.desc);
             id = itemView.findViewById(R.id.idApp);
             cardView = itemView.findViewById(R.id.cardViewCard);
-            type = itemView.findViewById(R.id.type);
         }
     }
 }

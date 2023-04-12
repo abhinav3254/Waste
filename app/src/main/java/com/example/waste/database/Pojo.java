@@ -7,19 +7,14 @@ public class Pojo {
     String price;
     String desc;
     String date;
-    String type;
 
-    public String getType() {
-        return type;
-    }
 
-    public Pojo(String id, String title, String price, String desc, String date,String type) {
+    public Pojo(String id, String title, String price, String desc, String date) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.desc = desc;
         this.date = date;
-        this.type = type;
     }
 
 
@@ -44,7 +39,7 @@ public class Pojo {
         return date;
     }
 
-    public Pojo(String title, String price, String desc, String date,String type) {
+    public Pojo(String title, String price, String desc, String date) {
         this.title = title;
         this.price = price;
         this.desc = desc;
