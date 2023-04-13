@@ -65,4 +65,11 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    public void deleteOne (Pojo pojo) {
+        SQLiteDatabase database = getWritableDatabase();
+        String whereClause = "_id=?";
+         String[] whereArgs = {pojo.getId()};
+         database.delete(TABLE_NAME,whereClause,whereArgs);
+    }
 }

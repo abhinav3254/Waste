@@ -7,6 +7,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.waste.database.DBHelper;
 import com.example.waste.database.Pojo;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -40,11 +41,20 @@ public class ExtraStuffs {
         TextView date = bottomSheetDialog.findViewById(R.id.dateBtm);
         TextView price = bottomSheetDialog.findViewById(R.id.priceBtm);
         TextView desc = bottomSheetDialog.findViewById(R.id.descBtm);
+        MaterialButton deleteBtn = bottomSheetDialog.findViewById(R.id.btmDeleteBtn);
+        DBHelper db = new DBHelper(context);
 
         title.setText(pojo.getTitle());
         date.setText(pojo.getDate());
         price.setText(pojo.getPrice());
         desc.setText(pojo.getDesc());
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.deleteOne(pojo);
+            }
+        });
 
         bottomSheetDialog.show();
     }

@@ -94,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btmDeleteBtn"
                     app:cornerRadius="20dp"
                     android:elevation="2dp"
                     android:textColor="@color/white"
