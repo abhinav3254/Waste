@@ -56,7 +56,7 @@ public class ExtraStuffs {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("Do you want to Delete ?");
-                builder.setTitle("Alert !");
+                builder.setTitle("Delete !");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
                     db.deleteOne(pojo);
