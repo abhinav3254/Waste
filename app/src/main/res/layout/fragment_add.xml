@@ -45,22 +45,25 @@
                             android:layout_marginRight="20dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
-                            android:hint="Title">
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:hint="Title"
+                            >
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/titleText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/title_svgrepo_com"
                                 android:drawablePadding="10dp"
-                                android:outlineAmbientShadowColor="#B2A4FF"
                                 />
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:hint="Price">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/priceText"
@@ -69,6 +72,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/rupee"
                                 android:drawablePadding="10dp"
+                                android:background="#FDF4F5"
                                 />
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
@@ -77,6 +81,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:hint="Description">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/descriptionText"
@@ -106,6 +111,7 @@
                                 android:gravity="center"
                                 android:textSize="20sp"
                                 android:textColor="@color/black"
+                                android:background="#FDF4F5"
                                 />
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnDate"
