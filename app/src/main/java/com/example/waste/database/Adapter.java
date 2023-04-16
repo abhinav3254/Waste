@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,8 @@ import java.util.List;
 public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private Context context;
     private List<Pojo> list;
+
+    Animation animation;
 
     public Adapter(Context context, List<Pojo> list) {
         this.context = context;
@@ -34,6 +38,8 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        animation = AnimationUtils.loadAnimation(context,R.anim.anim_one);
+        holder.cardView.startAnimation(animation);
 //        holder.desc.setText(list.get(holder.getAdapterPosition()).getDesc());
         holder.title.setText(list.get(holder.getAdapterPosition()).getTitle());
 //        holder.date.setText(list.get(holder.getAdapterPosition()).getDate());
