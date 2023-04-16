@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.waste.database.DBHelper;
 import com.example.waste.database.Pojo;
+import com.example.waste.database.ProfilePojo;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -68,6 +71,29 @@ public class ExtraStuffs {
 
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            }
+        });
+
+        bottomSheetDialog.show();
+    }
+
+    public static void profileBottomSheet (Context context) {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+        bottomSheetDialog.setContentView(R.layout.profile_bottom_sheet);
+        TextInputEditText name = bottomSheetDialog.findViewById(R.id.profile_bottom_name);
+        MaterialButton save = bottomSheetDialog.findViewById(R.id.save_bottom_profile);
+        
+        DBHelper dbHelper = new DBHelper(context);
+        
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProfilePojo pojo = new ProfilePojo(name.getText().toString());
+                boolean ans = dbHelper.addProfile(pojo);
+                if (ans)
+                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
 
