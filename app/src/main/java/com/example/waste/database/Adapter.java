@@ -1,6 +1,11 @@
 package com.example.waste.database;
 
+import static android.graphics.Color.alpha;
+import static android.graphics.Color.argb;
+import static android.graphics.Color.rgb;
+
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +20,7 @@ import com.example.waste.ExtraStuffs;
 import com.example.waste.R;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -26,6 +32,7 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public Adapter(Context context, List<Pojo> list) {
         this.context = context;
         this.list = list;
+        Collections.reverse(list);
     }
 
     @NonNull
