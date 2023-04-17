@@ -52,13 +52,11 @@ public class DBProfile extends SQLiteOpenHelper {
 
     public Cursor readProfile () {
         String query = "SELECT * FROM "+TABLE_NAME;
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = null;
-
-        if (sqLiteDatabase!=null) {
-            cursor = sqLiteDatabase.rawQuery(query,null);
+        if (database!=null) {
+            cursor = database.rawQuery(query,null);
         }
-
         return cursor;
     }
 }

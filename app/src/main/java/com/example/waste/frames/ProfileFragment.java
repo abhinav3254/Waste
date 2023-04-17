@@ -15,11 +15,14 @@ import android.widget.Toast;
 
 import com.example.waste.ExtraStuffs;
 import com.example.waste.R;
+import com.example.waste.database.DBHelper;
 import com.example.waste.database.DBProfile;
+import com.example.waste.database.Pojo;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
@@ -37,15 +40,12 @@ public class ProfileFragment extends Fragment {
         editProfile = view.findViewById(R.id.editProfile);
         textView = view.findViewById(R.id.profileName);
 
-        List<ProfilePojo> list = new ArrayList<>();
+        List<ProfilePojo> listNew = new ArrayList<>();
 
-
-
-        if (list.isEmpty()) {
-            Toast.makeText(view.getContext(), "Empty", Toast.LENGTH_SHORT).show();
+        listNew = readProfile(view.getContext());
+        if (listNew.isEmpty()) {
         } else {
-            list = readProfile(view.getContext());
-            textView.setText(list.get(0).getName());
+            textView.setText(listNew.get(listNew.size()-1).getName());
         }
 
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -60,13 +60,13 @@ public class ProfileFragment extends Fragment {
     }
 
     public List<ProfilePojo> readProfile(Context context) {
-        DBProfile dbProfile = new DBProfile(context);
+        DBProfile dbHelper = new DBProfile(context);
         List<ProfilePojo> list = new ArrayList<>();
-        Cursor cursor = dbProfile.readProfile();
+        Cursor cursor = dbHelper.readProfile();
         if (cursor.getCount() == 0) {
         } else {
             while (cursor.moveToNext()) {
-                profilePojo = new ProfilePojo(cursor.getString(0), cursor.getString(1));
+                profilePojo = new ProfilePojo(cursor.getString(0),cursor.getString(1));
                 list.add(profilePojo);
             }
         }

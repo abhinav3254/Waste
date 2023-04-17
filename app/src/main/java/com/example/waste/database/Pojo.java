@@ -18,7 +18,6 @@ public class Pojo {
     }
 
 
-
     public String getId() {
         return id;
     }
