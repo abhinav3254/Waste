@@ -6,23 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.waste.database.DBHelper;
+import com.example.waste.database.DBProfile;
 import com.example.waste.database.Pojo;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class ExtraStuffs {
     static Calendar calendar = Calendar.getInstance();
@@ -83,13 +78,13 @@ public class ExtraStuffs {
         TextInputEditText name = bottomSheetDialog.findViewById(R.id.profile_bottom_name);
         MaterialButton save = bottomSheetDialog.findViewById(R.id.save_bottom_profile);
         
-        DBHelper dbHelper = new DBHelper(context);
+        DBProfile dbProfile = new DBProfile(context);
         
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ProfilePojo pojo = new ProfilePojo(name.getText().toString());
-                boolean ans = dbHelper.addProfile(pojo);
+                boolean ans = dbProfile.addProfile(pojo);
                 if (ans)
                     Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
                 else

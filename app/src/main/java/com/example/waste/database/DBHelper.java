@@ -30,13 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_DESC + " TEXT, "+
                 COLUMN_AMOUNT + " REAL); ";
 
-        String query2 = "CREATE TABLE "+"PROFILE"+
-                " ("+COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                "NAME" + " TEXT); ";
-
         sqLiteDatabase.execSQL(query);
-
-        sqLiteDatabase.execSQL(query2);
 
     }
 
@@ -60,32 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
-    }
-
-    public boolean addProfile (ProfilePojo pojo) {
-        String TABLE_NAME_1 = "NAME";
-        SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(TABLE_NAME_1,pojo.getName());
-        long res = database.insert("PROFILE",null,contentValues);
-
-        if (res == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public Cursor readProfile () {
-        Cursor cursor = null;
-        String query = "SELECT * FROM PROFILE";
-        SQLiteDatabase database = this.getReadableDatabase();
-
-        if (database!=null) {
-            cursor = database.rawQuery(query,null);
-        }
-
-        return cursor;
     }
 
     public Cursor readAll () {

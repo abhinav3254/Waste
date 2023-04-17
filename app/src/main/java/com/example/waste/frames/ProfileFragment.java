@@ -6,15 +6,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.waste.ExtraStuffs;
 import com.example.waste.R;
-import com.example.waste.database.DBHelper;
-import com.example.waste.database.Pojo;
+import com.example.waste.database.DBProfile;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.card.MaterialCardView;
 
@@ -38,7 +39,14 @@ public class ProfileFragment extends Fragment {
 
         List<ProfilePojo> list = new ArrayList<>();
 
-//        textView.setText(list.get(0).getName());
+
+
+        if (list.isEmpty()) {
+            Toast.makeText(view.getContext(), "Empty", Toast.LENGTH_SHORT).show();
+        } else {
+            list = readProfile(view.getContext());
+            textView.setText(list.get(0).getName());
+        }
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +60,9 @@ public class ProfileFragment extends Fragment {
     }
 
     public List<ProfilePojo> readProfile(Context context) {
-        DBHelper dbHelper = new DBHelper(context);
+        DBProfile dbProfile = new DBProfile(context);
         List<ProfilePojo> list = new ArrayList<>();
-        Cursor cursor = dbHelper.readProfile();
+        Cursor cursor = dbProfile.readProfile();
         if (cursor.getCount() == 0) {
         } else {
             while (cursor.moveToNext()) {
