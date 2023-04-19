@@ -33,6 +33,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/imageAdd"
                             android:layout_width="match_parent"
                             android:layout_height="250dp"
                             android:src="@drawable/undraw_revenue"
@@ -121,8 +122,8 @@
                                 android:text="Date"
                                 android:textAllCaps="false"
                                 android:textSize="20sp"
-                                android:backgroundTint="#9C27B0"
-                                app:cornerRadius="10dp"
+                                android:backgroundTint="#E86A33"
+                                app:cornerRadius="5dp"
                                 />
                         </LinearLayout>
 
@@ -135,12 +136,12 @@
                             android:layout_marginRight="20dp"
                             android:layout_marginTop="20dp"
                             android:text="Save"
-                            app:cornerRadius="10dp"
+                            app:cornerRadius="5dp"
                             android:padding="10dp"
                             android:layout_gravity="center"
                             android:layout_marginBottom="20dp"
                             android:textSize="18sp"
-                            android:backgroundTint="#9C27B0"
+                            android:backgroundTint="#E86A33"
                             />
 
                     </LinearLayout>

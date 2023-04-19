@@ -13,11 +13,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +54,8 @@ public class AddFragment extends Fragment {
 
     String[] spinnerData = {"Expense","Income"};
 
+    ImageView imageView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,13 +63,16 @@ public class AddFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
         binding = FragmentAddBinding.inflate(getLayoutInflater());
 
-
+        imageView = view.findViewById(R.id.imageAdd);
         btn = view.findViewById(R.id.btnDate);
         editDate = view.findViewById(R.id.editDate);
         save = view.findViewById(R.id.saveBtn);
         title = view.findViewById(R.id.titleText);
         price = view.findViewById(R.id.priceText);
         description = view.findViewById(R.id.descriptionText);
+
+        Animation animation = AnimationUtils.loadAnimation(view.getContext(),R.anim.animation_two);
+        imageView.startAnimation(animation);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

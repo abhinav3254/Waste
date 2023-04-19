@@ -1,9 +1,12 @@
 package com.example.waste;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -20,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable drawable = new ColorDrawable(Color.parseColor("#E86A33"));
+        actionBar.setBackgroundDrawable(drawable);
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).commit();
         binding.btmNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

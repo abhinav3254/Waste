@@ -45,11 +45,11 @@ public class HomeFragment extends Fragment {
 
         // **************************** Action Bar  ****************************
 
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#0F9D58"));
+//        ColorDrawable colorDrawable
+//                = new ColorDrawable(Color.parseColor("#F9D949"));
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(colorDrawable);
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
 
         return view;

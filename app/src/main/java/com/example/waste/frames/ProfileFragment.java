@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +84,7 @@ public class ProfileFragment extends Fragment {
         totalExpenseProfile.setText(ans+"");
 
         // **************************** pie chart work  ****************************
-        graphShow();
+        graphShow(view.getContext());
 
 
         // **************************** percentage work  ****************************
@@ -143,7 +145,7 @@ public class ProfileFragment extends Fragment {
 
     // **************************** pie chart work  ****************************
 
-    public void graphShow () {
+    public void graphShow (Context context) {
         pieChart.addPieSlice(
                 new PieModel(
                         "Income",
@@ -158,6 +160,9 @@ public class ProfileFragment extends Fragment {
                         Color.parseColor("#62CDFF")
                 )
         );
+
+        Animation animation = AnimationUtils.loadAnimation(context,R.anim.animation_two);
+        pieChart.startAnimation(animation);
 
         pieChart.startAnimation();
 
