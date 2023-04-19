@@ -29,7 +29,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
     MaterialCardView editProfile;
-    TextView textView,totalExpenseProfile;
+    TextView textView,totalExpenseProfile,totalIncomeProfile;
     ProfilePojo profilePojo;
 
     @Override
@@ -41,6 +41,7 @@ public class ProfileFragment extends Fragment {
         editProfile = view.findViewById(R.id.editProfile);
         textView = view.findViewById(R.id.profileName);
         totalExpenseProfile = view.findViewById(R.id.totalExpenseProfile);
+        totalIncomeProfile = view.findViewById(R.id.totalIncomeProfile);
 
 
         List<ProfilePojo> listNew = new ArrayList<>();
