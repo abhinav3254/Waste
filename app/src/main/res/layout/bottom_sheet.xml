@@ -63,6 +63,16 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/typeBtm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:text="type"
+                    android:textColor="@color/red"
+                    android:textSize="20sp" />
+
+                <TextView
                     android:id="@+id/dateBtm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

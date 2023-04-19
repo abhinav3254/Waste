@@ -120,7 +120,7 @@ public class AddFragment extends Fragment {
                     ExtraStuffs.setDate(editDate);
                 } else {
                     // save to database
-                    pojo = new Pojo(t,p,desc,d);
+                    pojo = new Pojo(t,p,desc,d,valueSpinner[0]);
                     dbHelper = new DBHelper(view.getContext());
                     boolean ans = dbHelper.addData(pojo);
                     if (ans) {

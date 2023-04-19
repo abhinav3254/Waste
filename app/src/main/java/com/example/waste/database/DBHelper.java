@@ -15,9 +15,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private String COLUMN_DATE = "_date";
     private String COLUMN_AMOUNT = "_amount";
     private String COLUMN_DESC = "_desc";
+    private String COLUMN_TYPE = "_type";
     private Context context;
     public DBHelper(@Nullable Context context) {
-        super(context, "save.db", null, 3);
+        super(context, "save.db", null, 4);
         this.context = context;
     }
 
@@ -28,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_TITLE + " TEXT, "+
                 COLUMN_DATE + " TEXT, "+
                 COLUMN_DESC + " TEXT, "+
+                COLUMN_TYPE + " TEXT, "+
                 COLUMN_AMOUNT + " REAL); ";
 
         sqLiteDatabase.execSQL(query);
@@ -45,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_TITLE,pojo.getTitle());
         contentValues.put(COLUMN_DATE,pojo.getDate());
         contentValues.put(COLUMN_DESC,pojo.getDesc());
+        contentValues.put(COLUMN_TYPE,pojo.getType());
         contentValues.put(COLUMN_AMOUNT,pojo.getPrice());
 
         long res = database.insert(TABLE_NAME,null,contentValues);

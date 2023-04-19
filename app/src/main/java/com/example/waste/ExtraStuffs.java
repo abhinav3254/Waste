@@ -43,12 +43,14 @@ public class ExtraStuffs {
         TextView price = bottomSheetDialog.findViewById(R.id.priceBtm);
         TextView desc = bottomSheetDialog.findViewById(R.id.descBtm);
         MaterialButton deleteBtn = bottomSheetDialog.findViewById(R.id.btmDeleteBtn);
+        TextView type = bottomSheetDialog.findViewById(R.id.typeBtm);
         DBHelper db = new DBHelper(context);
 
         title.setText(pojo.getTitle());
         date.setText(pojo.getDate());
         price.setText(pojo.getPrice());
         desc.setText(pojo.getDesc());
+        type.setText(pojo.getType());
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
