@@ -56,7 +56,7 @@ public class AddFragment extends Fragment {
 
     Spinner spinner;
 
-    String[] listSpinner = {"food","fashion","grocery","dairy","education","refreshment","alcohol","subscription"};
+    String[] listSpinner = {"food","fashion","grocery","dairy","education","refreshment","subscription","emi"};
 
     ImageView imageView;
 
