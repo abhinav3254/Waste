@@ -72,4 +72,18 @@ public class DBHelper extends SQLiteOpenHelper {
          String[] whereArgs = {pojo.getId()};
          database.delete(TABLE_NAME,whereClause,whereArgs);
     }
+
+    // get all expenses
+
+    public Cursor getAllExpenses () {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = null;
+        String query = "SELECT "+COLUMN_AMOUNT+" FROM "+TABLE_NAME;
+
+        if (database!=null) {
+            cursor = database.rawQuery(query,null);
+        }
+
+        return cursor;
+    }
 }

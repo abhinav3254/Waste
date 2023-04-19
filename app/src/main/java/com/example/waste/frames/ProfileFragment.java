@@ -22,13 +22,14 @@ import com.example.waste.database.ProfilePojo;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
     MaterialCardView editProfile;
-    TextView textView;
+    TextView textView,totalExpenseProfile;
     ProfilePojo profilePojo;
 
     @Override
@@ -39,6 +40,8 @@ public class ProfileFragment extends Fragment {
 
         editProfile = view.findViewById(R.id.editProfile);
         textView = view.findViewById(R.id.profileName);
+        totalExpenseProfile = view.findViewById(R.id.totalExpenseProfile);
+
 
         List<ProfilePojo> listNew = new ArrayList<>();
 
@@ -58,6 +61,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        int ans = getAllExpenses(view.getContext());
+        totalExpenseProfile.setText(ans+"");
+
 
         return view;
     }
@@ -75,4 +81,27 @@ public class ProfileFragment extends Fragment {
         }
         return list;
     }
+
+    // **************************** get all expenses  ****************************
+
+    public Integer getAllExpenses (Context context) {
+        DBHelper dbHelper = new DBHelper(context);
+        List<Integer> list = new ArrayList<>();
+        Cursor cursor = dbHelper.getAllExpenses();
+
+        if (cursor.getCount() == 0) {
+
+        } else {
+            while (cursor.moveToNext()) {
+                int value = Integer.parseInt(cursor.getString(0));
+                list.add(value);
+            }
+        }
+        int sum = 0;
+        for (Integer values: list)
+            sum = sum+values;
+
+        return sum;
+    }
+
 }
