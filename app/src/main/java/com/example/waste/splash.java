@@ -8,10 +8,12 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class splash extends AppCompatActivity {
 
-    ImageView imageView;
+    ImageView imageView,imageCloud;
+    TextView appName,slogan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,19 @@ public class splash extends AppCompatActivity {
         getSupportActionBar().hide();
 
         imageView = findViewById(R.id.image);
+        imageCloud = findViewById(R.id.imageCloud);
+
+        appName = findViewById(R.id.appName);
+        slogan = findViewById(R.id.slogan);
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_three);
         imageView.setAnimation(animation);
+        imageCloud.setAnimation(animation);
+
+        Animation animation2 = AnimationUtils.loadAnimation(this,R.anim.animation_two);
+        appName.setAnimation(animation2);
+        slogan.setAnimation(animation2);
+
 
 
 
