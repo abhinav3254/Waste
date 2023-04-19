@@ -93,6 +93,10 @@ public class ProfileFragment extends Fragment {
         pieChart.startAnimation();
 
 
+        // **************************** pie chart work  ****************************
+
+
+
         return view;
     }
 
