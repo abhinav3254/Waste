@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(MainActivity.this, R.color.amazing_yellow));
 
+        binding.btmNav.setBackgroundColor(Color.rgb(235, 176, 45));
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).commit();
         binding.btmNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
