@@ -33,7 +33,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
     MaterialCardView editProfile;
-    TextView textView,totalExpenseProfile,totalIncomeProfile;
+    TextView textView,totalExpenseProfile,totalIncomeProfile,incomePercentage,expensePercentage;
     ProfilePojo profilePojo;
 
     PieChart pieChart;
@@ -48,6 +48,8 @@ public class ProfileFragment extends Fragment {
         textView = view.findViewById(R.id.profileName);
         totalExpenseProfile = view.findViewById(R.id.totalExpenseProfile);
         totalIncomeProfile = view.findViewById(R.id.totalIncomeProfile);
+        incomePercentage = view.findViewById(R.id.incomePercentage);
+        expensePercentage = view.findViewById(R.id.expensePercentage);
 
         pieChart = view.findViewById(R.id.pieChart);
 
@@ -74,27 +76,11 @@ public class ProfileFragment extends Fragment {
         totalExpenseProfile.setText(ans+"");
 
         // **************************** pie chart work  ****************************
-
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Income",
-                        (float) Double.parseDouble(totalIncomeProfile.getText().toString()),
-                        Color.parseColor("#ffa527")
-                )
-        );
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Expense",
-                        (float) Double.parseDouble(totalExpenseProfile.getText().toString()),
-                        Color.parseColor("#ef5354")
-                )
-        );
-
-        pieChart.startAnimation();
+        graphShow();
 
 
-        // **************************** pie chart work  ****************************
-
+        // **************************** percentage work  ****************************
+        getPercent(totalIncomeProfile.getText().toString(),totalExpenseProfile.getText().toString());
 
 
         return view;
@@ -134,6 +120,49 @@ public class ProfileFragment extends Fragment {
             sum = sum+values;
 
         return sum;
+    }
+
+    // **************************** pie chart work  ****************************
+
+    public void graphShow () {
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Income",
+                        (float) Double.parseDouble(totalIncomeProfile.getText().toString()),
+                        Color.parseColor("#ffa527")
+                )
+        );
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Expense",
+                        (float) Double.parseDouble(totalExpenseProfile.getText().toString()),
+                        Color.parseColor("#62CDFF")
+                )
+        );
+
+        pieChart.startAnimation();
+
+    }
+
+    // **************************** percentage work  ****************************
+
+    public void getPercent (String inc,String exp) {
+
+        Log.d("find","inc :-> "+inc+" exp -> "+exp);
+
+        double income = Double.parseDouble(inc);
+        double expense = Double.parseDouble(exp);
+
+        Log.d("find2","inc ->"+income+" exp "+expense);
+
+        expense = expense/income;
+
+        double v1 = Math.round(expense*100);
+        double v2 = Math.round(100-v1);
+
+
+        expensePercentage.setText(v1+"%");
+        incomePercentage.setText(v2+"%");
     }
 
 }

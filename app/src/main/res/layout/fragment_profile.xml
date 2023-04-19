@@ -68,6 +68,7 @@
                                     android:text="Total Income"
                                     android:textSize="20sp"
                                     android:textColor="@color/black"
+                                    android:fontFamily="@font/akaya_telivigala"
                                     />
                                 <TextView
                                     android:layout_width="0dp"
@@ -75,7 +76,8 @@
                                     android:layout_weight="1"
                                     android:text="Total Expense"
                                     android:textSize="20sp"
-                                    android:textColor="@color/black"
+                                    android:textColor="#ef5354"
+                                    android:fontFamily="@font/akaya_telivigala"
                                     />
                             </LinearLayout>
                             <LinearLayout
@@ -94,15 +96,17 @@
                                     android:text="5000"
                                     android:textSize="20sp"
                                     android:textColor="@color/black"
+                                    android:fontFamily="@font/akaya_telivigala"
                                     />
                                 <TextView
                                     android:id="@+id/totalExpenseProfile"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="2000"
+                                    android:text="0"
                                     android:textSize="20sp"
-                                    android:textColor="@color/black"
+                                    android:textColor="#ef5354"
+                                    android:fontFamily="@font/akaya_telivigala"
                                     />
                             </LinearLayout>
 
@@ -116,80 +120,159 @@
                         android:layout_margin="20dp"
                         android:elevation="2dp"
                         >
+
                         <LinearLayout
-                            android:padding="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                            <org.eazegraph.lib.charts.PieChart
-                                android:id="@+id/pieChart"
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:layout_width="0dp"
-                                android:layout_height="200dp"
-                                android:layout_weight="1"
-                                android:layout_margin="20dp"
-                                />
-                            <LinearLayout
-                                android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_weight="1"
-                                android:layout_marginRight="20dp"
-                                android:layout_gravity="center_vertical"
+                                android:text="Graphical Analysis"
+                                android:textSize="20sp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/bungee_shade"
+                                />
+
+                            <LinearLayout
+                                android:padding="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
                                 >
+
+                                <org.eazegraph.lib.charts.PieChart
+                                    android:id="@+id/pieChart"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="0dp"
+                                    android:layout_height="200dp"
+                                    android:layout_weight="1"
+                                    android:layout_margin="20dp"
+                                    />
                                 <LinearLayout
-                                    android:layout_margin="10dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:orientation="horizontal">
-
-                                    <View
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
-                                        android:background="#ffa527"
-                                        />
-                                    <TextView
-                                        android:layout_marginLeft="2dp"
-                                        android:textColor="@color/black"
-                                        android:textSize="15sp"
-                                        android:layout_gravity="center_vertical"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_gravity="center_vertical"
+                                    >
+                                    <LinearLayout
+                                        android:layout_margin="10dp"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:text="Income"
-                                        />
+                                        android:layout_height="20dp"
+                                        android:orientation="horizontal">
 
-                                </LinearLayout>
+                                        <View
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:background="#ffa527"
+                                            />
+                                        <TextView
+                                            android:layout_marginLeft="2dp"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Income"
+                                            />
 
-                                <LinearLayout
-                                    android:layout_margin="10dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:orientation="horizontal">
-                                    
-                                    <View
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
-                                        android:background="#ef5354"
-                                        android:layout_gravity="center_vertical"
-                                        />
-                                    <TextView
-                                        android:layout_marginLeft="2dp"
-                                        android:textColor="@color/black"
-                                        android:textSize="15sp"
-                                        android:layout_gravity="center_vertical"
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_margin="10dp"
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:text="Expenses"
-                                        />
-                                    
+                                        android:layout_height="20dp"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:background="#62CDFF"
+                                            android:layout_gravity="center_vertical"
+                                            />
+                                        <TextView
+                                            android:layout_marginLeft="2dp"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Expenses"
+                                            />
+
+                                    </LinearLayout>
+
                                 </LinearLayout>
 
                             </LinearLayout>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginTop="10dp"
+                                >
+                                <TextView
+                                    android:fontFamily="@font/akaya_telivigala"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Income"
+                                    android:layout_weight="1"
+                                    />
+                                <TextView
+                                    android:id="@+id/incomePercentage"
+                                    android:fontFamily="@font/akaya_telivigala"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="1%"
+                                    android:layout_weight="1"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                >
+                                <TextView
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/akaya_telivigala"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Expense"
+                                    android:layout_weight="1"
+                                    />
+                                <TextView
+                                    android:id="@+id/expensePercentage"
+                                    android:fontFamily="@font/akaya_telivigala"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="1%"
+                                    android:layout_weight="1"
+                                    />
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
