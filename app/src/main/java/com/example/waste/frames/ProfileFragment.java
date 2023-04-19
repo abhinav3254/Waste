@@ -2,6 +2,7 @@ package com.example.waste.frames;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,9 @@ import com.example.waste.database.Pojo;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.card.MaterialCardView;
 
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,6 +36,8 @@ public class ProfileFragment extends Fragment {
     TextView textView,totalExpenseProfile,totalIncomeProfile;
     ProfilePojo profilePojo;
 
+    PieChart pieChart;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class ProfileFragment extends Fragment {
         textView = view.findViewById(R.id.profileName);
         totalExpenseProfile = view.findViewById(R.id.totalExpenseProfile);
         totalIncomeProfile = view.findViewById(R.id.totalIncomeProfile);
+
+        pieChart = view.findViewById(R.id.pieChart);
 
 
         List<ProfilePojo> listNew = new ArrayList<>();
@@ -64,6 +72,25 @@ public class ProfileFragment extends Fragment {
 
         int ans = getAllExpenses(view.getContext());
         totalExpenseProfile.setText(ans+"");
+
+        // **************************** pie chart work  ****************************
+
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Income",
+                        Integer.parseInt(totalIncomeProfile.getText().toString()),
+                        Color.parseColor("#ffa527")
+                )
+        );
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Expense",
+                        Integer.parseInt(totalExpenseProfile.getText().toString()),
+                        Color.parseColor("#ef5354")
+                )
+        );
+
+        pieChart.startAnimation();
 
 
         return view;

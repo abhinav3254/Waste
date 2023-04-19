@@ -111,16 +111,84 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
-                        android:layout_height="400dp">
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="20dp"
+                        android:elevation="2dp"
+                        >
                         <LinearLayout
+                            android:padding="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Space for graph"
+                            android:orientation="horizontal"
+                            >
+
+                            <org.eazegraph.lib.charts.PieChart
+                                android:id="@+id/pieChart"
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="0dp"
+                                android:layout_height="200dp"
+                                android:layout_weight="1"
+                                android:layout_margin="20dp"
                                 />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_marginRight="20dp"
+                                android:layout_gravity="center_vertical"
+                                >
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:background="#ffa527"
+                                        />
+                                    <TextView
+                                        android:layout_marginLeft="2dp"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Income"
+                                        />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:orientation="horizontal">
+                                    
+                                    <View
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:background="#ef5354"
+                                        android:layout_gravity="center_vertical"
+                                        />
+                                    <TextView
+                                        android:layout_marginLeft="2dp"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="Expenses"
+                                        />
+                                    
+                                </LinearLayout>
+
+                            </LinearLayout>
+
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
