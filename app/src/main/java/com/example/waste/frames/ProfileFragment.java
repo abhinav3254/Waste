@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        int ans = getAllExpenses(view.getContext());
+        Double ans = getAllExpenses(view.getContext());
         totalExpenseProfile.setText(ans+"");
 
         // **************************** pie chart work  ****************************
@@ -78,14 +78,14 @@ public class ProfileFragment extends Fragment {
         pieChart.addPieSlice(
                 new PieModel(
                         "Income",
-                        Integer.parseInt(totalIncomeProfile.getText().toString()),
+                        (float) Double.parseDouble(totalIncomeProfile.getText().toString()),
                         Color.parseColor("#ffa527")
                 )
         );
         pieChart.addPieSlice(
                 new PieModel(
                         "Expense",
-                        Integer.parseInt(totalExpenseProfile.getText().toString()),
+                        (float) Double.parseDouble(totalExpenseProfile.getText().toString()),
                         Color.parseColor("#ef5354")
                 )
         );
@@ -112,21 +112,21 @@ public class ProfileFragment extends Fragment {
 
     // **************************** get all expenses  ****************************
 
-    public Integer getAllExpenses (Context context) {
+    public Double getAllExpenses (Context context) {
         DBHelper dbHelper = new DBHelper(context);
-        List<Integer> list = new ArrayList<>();
+        List<Double> list = new ArrayList<>();
         Cursor cursor = dbHelper.getAllExpenses();
 
         if (cursor.getCount() == 0) {
 
         } else {
             while (cursor.moveToNext()) {
-                int value = Integer.parseInt(cursor.getString(0));
+                Double value = Double.parseDouble(cursor.getString(0));
                 list.add(value);
             }
         }
-        int sum = 0;
-        for (Integer values: list)
+        Double sum = 0.0;
+        for (Double values: list)
             sum = sum+values;
 
         return sum;
