@@ -1,5 +1,6 @@
 package com.example.waste.frames;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ public class AddFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
         binding = FragmentAddBinding.inflate(getLayoutInflater());
+
 
         btn = view.findViewById(R.id.btnDate);
         editDate = view.findViewById(R.id.editDate);
