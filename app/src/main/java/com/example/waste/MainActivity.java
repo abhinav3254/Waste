@@ -3,12 +3,15 @@ package com.example.waste;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.waste.databinding.ActivityMainBinding;
 import com.example.waste.frames.AddFragment;
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         ColorDrawable drawable = new ColorDrawable(Color.parseColor("#E86A33"));
         actionBar.setBackgroundDrawable(drawable);
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(MainActivity.this, R.color.amazing_yellow));
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).commit();

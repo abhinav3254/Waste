@@ -1,10 +1,13 @@
 package com.example.waste;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -21,6 +24,11 @@ public class splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         getSupportActionBar().hide();
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(splash.this, R.color.amazing_yellow));
 
         imageView = findViewById(R.id.image);
         imageCloud = findViewById(R.id.imageCloud);
