@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -86,7 +87,7 @@ public class ExtraStuffs {
                 ProfilePojo pojo = new ProfilePojo(name.getText().toString());
                 boolean ans = dbProfile.addProfile(pojo);
                 if (ans)
-                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }

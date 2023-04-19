@@ -44,6 +44,9 @@ public class ProfileFragment extends Fragment {
 
         listNew = readProfile(view.getContext());
         if (listNew.isEmpty()) {
+            DBProfile dbProfile = new DBProfile(view.getContext());
+            profilePojo = new ProfilePojo(textView.getText().toString());
+            dbProfile.addProfile(profilePojo);
         } else {
             textView.setText(listNew.get(listNew.size()-1).getName());
         }
