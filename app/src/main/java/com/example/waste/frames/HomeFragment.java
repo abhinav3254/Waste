@@ -2,6 +2,8 @@ package com.example.waste.frames;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +45,11 @@ public class HomeFragment extends Fragment {
 
         // **************************** Action Bar  ****************************
 
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#0F9D58"));
+
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
 
         return view;

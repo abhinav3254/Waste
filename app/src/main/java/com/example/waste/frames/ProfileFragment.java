@@ -1,11 +1,13 @@
 package com.example.waste.frames;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -34,7 +36,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
-    MaterialCardView editProfile;
+    MaterialCardView editProfile,deleteAllBtn;
     TextView textView,totalExpenseProfile,totalIncomeProfile,incomePercentage,expensePercentage;
     ProfilePojo profilePojo;
 
@@ -52,6 +54,8 @@ public class ProfileFragment extends Fragment {
         totalIncomeProfile = view.findViewById(R.id.totalIncomeProfile);
         incomePercentage = view.findViewById(R.id.incomePercentage);
         expensePercentage = view.findViewById(R.id.expensePercentage);
+
+        deleteAllBtn = view.findViewById(R.id.deleteAllBtn);
 
         pieChart = view.findViewById(R.id.pieChart);
 
@@ -87,6 +91,15 @@ public class ProfileFragment extends Fragment {
         // **************************** Action Bar  ****************************
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Abhinav");
+
+        // **************************** Delete All  ****************************
+
+        deleteAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogue(view.getContext());
+            }
+        });
 
 
         return view;
@@ -169,6 +182,27 @@ public class ProfileFragment extends Fragment {
 
         expensePercentage.setText(v1+"%");
         incomePercentage.setText(v2+"%");
+    }
+
+    public void alertDialogue (Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Are you sure to delete all ?");
+
+        builder.setTitle("Delete All");
+
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+            DBHelper dbHelper = new DBHelper(context);
+            dbHelper.deleteAll();
+        });
+
+        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 }
