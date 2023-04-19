@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,13 +37,14 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
 public class AddFragment extends Fragment {
 
-    FragmentAddBinding binding;
+//    FragmentAddBinding binding;
     Activity activity = this.getActivity();
     MaterialButton btn,save;
     TextView editDate;
@@ -52,7 +54,9 @@ public class AddFragment extends Fragment {
     Pojo pojo;
     String type;
 
-    String[] spinnerData = {"Expense","Income"};
+    Spinner spinner;
+
+    String[] listSpinner = {"food","fashion","grocery","dairy","education","refreshment","alcohol","subscription"};
 
     ImageView imageView;
 
@@ -61,7 +65,7 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        binding = FragmentAddBinding.inflate(getLayoutInflater());
+//        binding = FragmentAddBinding.inflate(getLayoutInflater());
 
         imageView = view.findViewById(R.id.imageAdd);
         btn = view.findViewById(R.id.btnDate);
@@ -69,6 +73,28 @@ public class AddFragment extends Fragment {
         save = view.findViewById(R.id.saveBtn);
         title = view.findViewById(R.id.titleText);
         price = view.findViewById(R.id.priceText);
+        spinner = view.findViewById(R.id.spinner);
+
+        final String[] valueSpinner = {""};
+
+        // **************************** Spinner ****************************
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                valueSpinner[0] = listSpinner[i].toLowerCase().trim();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter adapter = new ArrayAdapter(view.getContext(), com.google.android.material.R.layout.support_simple_spinner_dropdown_item,listSpinner);
+        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
         description = view.findViewById(R.id.descriptionText);
 
         Animation animation = AnimationUtils.loadAnimation(view.getContext(),R.anim.animation_two);
