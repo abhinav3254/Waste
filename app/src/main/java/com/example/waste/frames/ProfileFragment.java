@@ -92,7 +92,7 @@ public class ProfileFragment extends Fragment {
 
         // **************************** Action Bar  ****************************
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Abhinav");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Profile");
 
         // **************************** Delete All  ****************************
 
