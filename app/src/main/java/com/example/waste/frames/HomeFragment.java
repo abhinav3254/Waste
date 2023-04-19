@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,11 @@ public class HomeFragment extends Fragment {
         Adapter adapter = new Adapter(view.getContext(),readAll(view.getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(adapter);
+
+        // **************************** Action Bar  ****************************
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
+
 
         return view;
     }

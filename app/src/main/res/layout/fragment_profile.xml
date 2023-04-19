@@ -133,7 +133,7 @@
                                 android:textSize="20sp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
-                                android:textColor="@color/black"
+                                android:textColor="#E11299"
                                 android:fontFamily="@font/bungee_shade"
                                 />
 
