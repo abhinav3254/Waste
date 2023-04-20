@@ -4,14 +4,12 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.waste.database.DBHelper;
-import com.example.waste.database.DBProfile;
 import com.example.waste.database.Pojo;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -81,13 +79,13 @@ public class ExtraStuffs {
         TextInputEditText name = bottomSheetDialog.findViewById(R.id.profile_bottom_name);
         MaterialButton save = bottomSheetDialog.findViewById(R.id.save_bottom_profile);
         
-        DBProfile dbProfile = new DBProfile(context);
+        DBHelper dbProfile = new DBHelper(context);
         
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfilePojo pojo = new ProfilePojo(name.getText().toString());
-                boolean ans = dbProfile.addProfile(pojo);
+                ProfilePojo pojo = new ProfilePojo(name.getText().toString(),"0");
+                boolean ans = dbProfile.addProfileData(pojo);
                 if (ans)
                     Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
                 else

@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -18,13 +17,10 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.waste.ExtraStuffs;
 import com.example.waste.R;
 import com.example.waste.database.DBHelper;
-import com.example.waste.database.DBProfile;
-import com.example.waste.database.Pojo;
 import com.example.waste.database.ProfilePojo;
 import com.google.android.material.card.MaterialCardView;
 
@@ -32,8 +28,6 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
@@ -61,14 +55,15 @@ public class ProfileFragment extends Fragment {
 
         pieChart = view.findViewById(R.id.pieChart);
 
+        // **************** fetching profile data ****************
 
         List<ProfilePojo> listNew = new ArrayList<>();
 
         listNew = readProfile(view.getContext());
         if (listNew.isEmpty()) {
-            DBProfile dbProfile = new DBProfile(view.getContext());
-            profilePojo = new ProfilePojo(textView.getText().toString());
-            dbProfile.addProfile(profilePojo);
+            DBHelper dbProfile = new DBHelper(view.getContext());
+            profilePojo = new ProfilePojo(textView.getText().toString(),"0");
+            dbProfile.addProfileData(profilePojo);
         } else {
             textView.setText(listNew.get(listNew.size()-1).getName());
         }
@@ -108,13 +103,13 @@ public class ProfileFragment extends Fragment {
     }
 
     public List<ProfilePojo> readProfile(Context context) {
-        DBProfile dbHelper = new DBProfile(context);
+        DBHelper dbHelper = new DBHelper(context);
         List<ProfilePojo> list = new ArrayList<>();
         Cursor cursor = dbHelper.readProfile();
         if (cursor.getCount() == 0) {
         } else {
             while (cursor.moveToNext()) {
-                profilePojo = new ProfilePojo(cursor.getString(0),cursor.getString(1));
+                profilePojo = new ProfilePojo(cursor.getString(0),cursor.getString(1),cursor.getString(2));
                 list.add(profilePojo);
             }
         }
