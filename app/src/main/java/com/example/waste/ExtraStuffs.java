@@ -86,11 +86,16 @@ public class ExtraStuffs {
             @Override
             public void onClick(View view) {
 //                ProfilePojo pojo = new ProfilePojo();
-                boolean ans = dbProfile.updateProfile("1",name.getText().toString(),amountBtmSheet.getText().toString());
-                if (ans)
-                    Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                
+                if (name.getText().toString().isEmpty() || amountBtmSheet.getText().toString().isEmpty()) {
+                    Toast.makeText(context, "Fields can't be empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean ans = dbProfile.updateProfile("1", name.getText().toString(), amountBtmSheet.getText().toString());
+                    if (ans)
+                        Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
