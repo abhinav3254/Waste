@@ -81,6 +81,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean updateProfile (String id,String name,String amount) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME,name);
+        values.put(COLUMN_AMOUNT2,amount);
+
+        long res = database.update(TABLE_NAME2,values,"_id=?",new String[]{id});
+
+        if (res == -1)
+            return false;
+        else
+            return true;
+
+    }
+
     public boolean addData(Pojo pojo) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -85,8 +85,8 @@ public class ExtraStuffs {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfilePojo pojo = new ProfilePojo(name.getText().toString(),amountBtmSheet.getText().toString());
-                boolean ans = dbProfile.addProfileData(pojo);
+//                ProfilePojo pojo = new ProfilePojo();
+                boolean ans = dbProfile.updateProfile("1",name.getText().toString(),amountBtmSheet.getText().toString());
                 if (ans)
                     Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
                 else
