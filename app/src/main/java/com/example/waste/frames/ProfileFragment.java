@@ -66,6 +66,7 @@ public class ProfileFragment extends Fragment {
             dbProfile.addProfileData(profilePojo);
         } else {
             textView.setText(listNew.get(listNew.size()-1).getName());
+            totalIncomeProfile.setText(listNew.get(listNew.size()-1).getAmount());
         }
 
         editProfile.setOnClickListener(new View.OnClickListener() {

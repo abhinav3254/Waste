@@ -77,6 +77,7 @@ public class ExtraStuffs {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(R.layout.profile_bottom_sheet);
         TextInputEditText name = bottomSheetDialog.findViewById(R.id.profile_bottom_name);
+        TextInputEditText amountBtmSheet = bottomSheetDialog.findViewById(R.id.amountBtmSheet);
         MaterialButton save = bottomSheetDialog.findViewById(R.id.save_bottom_profile);
         
         DBHelper dbProfile = new DBHelper(context);
@@ -84,7 +85,7 @@ public class ExtraStuffs {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfilePojo pojo = new ProfilePojo(name.getText().toString(),"0");
+                ProfilePojo pojo = new ProfilePojo(name.getText().toString(),amountBtmSheet.getText().toString());
                 boolean ans = dbProfile.addProfileData(pojo);
                 if (ans)
                     Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
